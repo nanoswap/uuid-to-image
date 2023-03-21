@@ -5,9 +5,17 @@ import math
 
 def update_pixel(x, y, r, g, b, image):
     if x*r > y*b:
-        image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*r)%100%(y*x), int(y*g)%100, :])/2
-    elif x*g < y*g:
-        image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*r*y)%100, int(y*g)%100, :])/2
+        if r > b:
+            image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*r)%100%(y*x), int(y*g)%100, :])/2
+        else:
+            image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*g)%100, int(y*g)%100, :])/2
+    elif x*y*g < y*g:
+        if g > b:
+            image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*r*y)%100, int(y*g)%100, :])/2
+        elif b > r:
+            image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*g)%100, int(y*g)%100, :])/2
+        else:
+            image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*g)%100, int(y*g)%100, :])/2
     else:
         image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[x, y, :])/2
 
@@ -51,7 +59,7 @@ if __name__ == "__main__":
     print(cur_uuid)
 
     # for testing with a static uuid to make sure it's idempotent
-    # cur_uuid = uuid.UUID("4d28f930-9e4e-43ef-9fad-bc09da456bb4")
+    # cur_uuid = uuid.UUID("085a83a0-6c20-4670-9ccb-2a32493bfd2f")
 
     width, height = 100, 100
     image = generate_image(width, height, cur_uuid)
