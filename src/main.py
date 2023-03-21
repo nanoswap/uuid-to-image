@@ -55,13 +55,15 @@ def generate_image(width, height, uuid):
     return image
 
 if __name__ == "__main__":
-    cur_uuid = uuid.uuid4()
-    print(cur_uuid)
 
-    # for testing with a static uuid to make sure it's idempotent
-    # cur_uuid = uuid.UUID("085a83a0-6c20-4670-9ccb-2a32493bfd2f")
+    for i in range(10):
+        cur_uuid = uuid.uuid4()
+        print(cur_uuid)
 
-    width, height = 100, 100
-    image = generate_image(width, height, cur_uuid)
-    imageio.imwrite(f'images/output_{cur_uuid}.png', image)
-    imageio.imwrite(f'output.png', image)
+        # for testing with a static uuid to make sure it's idempotent
+        # cur_uuid = uuid.UUID("085a83a0-6c20-4670-9ccb-2a32493bfd2f")
+
+        width, height = 100, 100
+        image = generate_image(width, height, cur_uuid)
+        imageio.imwrite(f'images/output_{cur_uuid}.png', image)
+        imageio.imwrite(f'last_output.png', image)
