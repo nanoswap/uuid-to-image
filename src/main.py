@@ -4,7 +4,13 @@ import imageio
 import math
 
 def update_pixel(x, y, r, g, b, image):
-    image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*r)%100%(y*x), int(y*g)%100, :])/2
+    if x*r > y*b:
+        image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*r)%100%(y*x), int(y*g)%100, :])/2
+    elif x*g < y*g:
+        image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[int(x*r*y)%100, int(y*g)%100, :])/2
+    else:
+        image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[x, y, :])/2
+
     return image
 
 def distance(x1, y1, x2, y2):
