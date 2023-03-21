@@ -10,7 +10,7 @@ width, height = 100, 100
 image = np.zeros((width, height, 3), dtype=np.uint8)
 
 def update_pixel(x, y, r, g, b, image):
-    image[x, y, :] = (0xFF * r, 0xF * g, 0xFF * b)
+    image[x, y, :] = ((0xFF * r, 0xF * g, 0xFF * b) + image[x, y, :])/2
     return image
 
 def distance(x1, y1, x2, y2):
