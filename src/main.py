@@ -21,19 +21,24 @@ uuid_str = str(uuid).replace('-', '')
 last = 0
 for a, b, c in zip(uuid_str, uuid_str[1:], uuid_str[2:]):
 
-    r = int(a, 16) / 16
-    g = int(b, 16) / 16
-    b = int(c, 16) / 16
+    red = int(a, 16) / 16
+    green = int(b, 16) / 16
+    blue = int(c, 16) / 16
 
-    x_loc = int(r+g * width)
-    y_loc = int(g+b * height)
-    size = int((r + g + b) * 16)
-    last += x_loc
+    x_loc = int(red+green * width)
+    y_loc = int(green+blue * height)
+    size = int((red + green + blue) * 16)
+    last += x_loc / (last + 1)
 
     for x in range(x_loc - size, x_loc + size):
         for y in range(y_loc - size, y_loc + size):
             if x < width and y < height and x > 0 and y > 0:
-                if distance(x_loc, y_loc, x, y) < size:
-                    image = update_pixel(x, y, r, g, b, image)
+                if distance(x_loc, y_loc, x, y) < size or a > b:
+                    if int(a, 16) / (int(b, 16) + 1) > int(c, 16):
+                        image = update_pixel(x, y, red - green*width, green, blue, image)
+                    elif int(c, 16) / (int(a, 16) + 1) < int(b, 16):
+                        image = update_pixel(x, y, green, red - blue*height, blue, image)
+                    else:
+                        image = update_pixel(x, y, red - blue*height, blue - red*height, green * red*width, image)
 
 imageio.imwrite('output.png', image)
