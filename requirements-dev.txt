@@ -1,3 +1,5 @@
+numpy
+imageio
 mkdocs
 mkdocstrings
 mkdocstrings-python
