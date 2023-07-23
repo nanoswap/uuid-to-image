@@ -2,9 +2,10 @@
 # uuid-to-image
 Convert a uuid to an image in a repeatable way
 
-Documentation: (TBD)
+## Documentation:
+(TBD)
 
-Sample output:
+## Sample output:
 
 ![output_3e5deab5-551f-44ea-a84c-b6465241aa1f](https://github.com/beefy/uuid-to-image/assets/5047455/f45371e1-a4c2-4a8c-941c-db5851184b38)
 ![output_d0547ac8-0d0f-4a85-9153-11202853bf57](https://github.com/beefy/uuid-to-image/assets/5047455/1cd4f1aa-b687-4e04-b938-a3c7514e7ba2)
