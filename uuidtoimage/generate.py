@@ -96,7 +96,7 @@ class Generate():
             for x in range(x_loc - size, x_loc + size):
                 for y in range(y_loc - size, y_loc + size):
                     if 0 <= x < width and 0 <= y < height:
-                        distance = Generate.distance(
+                        current_distance = Generate.distance(
                             center[0],
                             center[1],
                             x,
@@ -105,7 +105,7 @@ class Generate():
 
                         # If the point is inside the circle, color it,
                         # else move it to the edge and color it
-                        if distance < radius:
+                        if current_distance < radius:
                             # Color pixel based on the UUID values
                             image = Generate.update_pixel(
                                 x,
@@ -133,7 +133,7 @@ class Generate():
         # Set alpha channel to 255 for all pixels inside the circle, else 0
         for x in range(width):
             for y in range(height):
-                if distance(center[0], center[1], x, y) < radius:
+                if Generate.distance(center[0], center[1], x, y) < radius:
                     image[y, x, 3] = 255
                 else:
                     image[y, x, 3] = 0
