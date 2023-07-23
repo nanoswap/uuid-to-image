@@ -1,0 +1,26 @@
+site_name: "uuidtoimage"
+repo_url: https://github.com/nanoswap/uuid-to-image
+edit_uri: blob/main/docs/
+
+nav:
+  - Home: 'index.md'
+  - Classes:
+      - 'Main': 'classes_loan_application.md'
+      - 'Loan': 
+        - 'LoanRepayment': 'classes_loan_repayment.md'
+        - 'LoanStatus': 'classes_loan_status.md'
+        - 'LoanReader': 'classes_loan_reader.md'
+        - 'LoanWriter': 'classes_loan_writer.md'
+      - 'Vouch': 'classes_vouch.md'
+  - About:
+      - 'License': 'LICENSE.md'
+
+theme:
+  name: "readthedocs"
+
+plugins:
+- search
+- mkdocstrings:
+    handlers:
+      python:
+        paths: [.]  # actually not needed, default

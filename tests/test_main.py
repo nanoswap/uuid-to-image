@@ -2,7 +2,7 @@ import unittest
 import uuid
 
 import numpy as np
-from src.main import update_pixel, distance, generate_image
+from uuidtoimage.generate import update_pixel, distance, generate_image
 
 class TestImageGeneration(unittest.TestCase):
     def test_update_pixel(self):

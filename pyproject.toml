@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "uuidtoimage"
+version = "0.0.1"
+description = "Convert a uuid to an image"
+authors = ["Nate Schultz <nate.schultz@outlook.com>"]
+readme = "README.md"
+packages = [{include = "uuidtoimage"}]
+
+[tool.poetry.dependencies]
+numpy = "1.24.2"
+imageio = "2.31.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
